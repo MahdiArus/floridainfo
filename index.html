@@ -1,83 +1,217 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>مخالفات الشرطة — الصفحة الرئيسية</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <link rel="stylesheet" href="assets/css/style.css" />
-</head>
-<body class="bg">
-  <header class="header">
-    <div class="brand">
-      <div class="badge"><i class="fas fa-shield-alt"></i></div>
-      <div>
-        <h1>أرشيف مخالفات الشرطة</h1>
-        <p class="muted">دليل المخالفات الداخلية للعاملين بالقسم —  </p>
-      </div>
-    </div>
-    <nav>
-      <button class="btn ghost" id="open-about"><i class="fas fa-info-circle"></i> معلومات</button>
-    </nav>
-  </header>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الصفحة الرئيسية - سيرفر فلوريدا</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+* {margin:0; padding:0; box-sizing:border-box;}
+html, body {height:100%; font-family:'Cairo', sans-serif; overflow-x:hidden;}
 
-  <main class="container">
-    <section class="intro glass">
-      <h2>اختر تصنيف المخالفات </h2>
-      <p class="muted">اضغط على أي بطاقة لعرض قائمة المخالفات داخل التصنيف</p>
-    </section>
-<!-- بانر القوانين -->
-<div class="laws-banner">
-  <a href="category.html?cat=rules">
-    <div class="content">
-      <div class="icon">⚖️</div>
-      <h2>القوانين</h2>
-      <p>تعرف على القوانين والأنظمة المعتمدة</p>
-    </div>
-  </a>
+/* Full screen intro overlay */
+#intro {
+  position:fixed; top:0; left:0; width:100%; height:100%;
+  background:#000000;
+  display:flex; justify-content:center; align-items:center;
+  z-index:9999; flex-direction:column;
+}
+#intro img {
+  width:200px; height:200px; object-fit:cover;
+  border-radius:50%;
+  box-shadow:0 0 40px #ff0000, 0 0 80px #A80534;
+  animation: introPulse 1.8s ease-in-out infinite alternate;
+}
+@keyframes introPulse {0%{transform:scale(0.9);}100%{transform:scale(1.05);}}
+
+#intro h1 {
+  color:#ff0000; margin-top:20px; font-size:2rem;
+  text-shadow:0 0 20px #ff0000;
+  animation: fadeInText 2s ease forwards;
+  opacity:0;
+}
+@keyframes fadeInText {to{opacity:1;}}
+
+/* Background gradient + particles */
+body {
+  background: linear-gradient(135deg,#1a0000,#000000);
+  position: relative; color:#fff;
+  display: flex; justify-content:center; align-items:center;
+  overflow:hidden;
+  perspective:1000px;
+}
+
+/* Particles */
+.particle {
+  position:absolute;
+  width:6px; height:6px; border-radius:50%;
+  background: #ff0000;
+  opacity:0.5;
+  animation: floatParticle linear infinite;
+}
+@keyframes floatParticle {
+  0%{transform: translateY(0) translateX(0);}
+  100%{transform: translateY(-1200px) translateX(300px);}
+}
+
+/* Main container */
+.container {
+  z-index:1; display:flex; flex-direction:column; align-items:center; gap:80px;
+  width:90%; max-width:1200px; text-align:center;
+  transition: transform 0.1s ease-out;
+  opacity:0; /* hidden initially for intro effect */
+}
+
+/* Floating logo with image */
+.logo-container {
+  width:180px; height:180px; border-radius:50%;
+  background: radial-gradient(circle,#A80534,#ff0000);
+  display:flex; justify-content:center; align-items:center;
+  box-shadow:0 0 40px #ff0000, 0 0 80px #A80534;
+  animation: float 3s ease-in-out infinite alternate;
+  position:relative;
+  transition: transform 0.1s ease-out;
+  overflow:hidden;
+}
+.logo-container img {
+  width:100%; height:100%; object-fit:cover;
+  border-radius:50%;
+  box-shadow:0 0 20px rgba(255,0,0,0.8);
+}
+@keyframes float {0%{transform:translateY(0);}100%{transform:translateY(-30px);}}
+
+/* Glow aura around logo */
+.logo-container::after {
+  content:""; position:absolute; width:200%; height:200%; top:-50%; left:-50%;
+  border-radius:50%; background: radial-gradient(circle, rgba(255,0,0,0.2), transparent 70%);
+  animation: pulse 2s infinite alternate;
+}
+@keyframes pulse {0%{transform:scale(0.8);}100%{transform:scale(1.2);}}
+
+/* Sections (cards) */
+.sections {
+  display:flex; flex-wrap:wrap; justify-content:center; gap:40px; width:100%;
+  transition: transform 0.1s ease-out;
+}
+
+.section {
+  background: transparent; /* إزالة اللون الداخلي */
+  border: 2px solid #ff0000; /* إطار أحمر */
+  flex:1 1 250px; min-width:250px;
+  padding:40px 30px; border-radius:25px;
+  text-decoration:none; color:#fff;
+  font-weight:700; font-size:1.6rem;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  box-shadow:0 0 20px rgba(255,0,0,0.5); /* ضوء خفيف حول الإطار */
+  position:relative; overflow:hidden;
+  opacity:0; transform: translateY(50px);
+  transition: all 0.5s ease, box-shadow 0.4s ease, transform 0.4s ease;
+}
+.section i { font-size:55px; margin-bottom:20px; transition: all 0.5s ease; }
+.section span {position:relative; z-index:1;}
+.section::before {
+  content:""; position:absolute; top:0; left:0; width:100%; height:100%;
+  border-radius:25px;
+  background: transparent; /* أزل الخلفية المتدرجة */
+  transform: scaleX(0); transform-origin:left;
+  transition: transform 0.4s ease;
+}
+.section:hover::before {transform:scaleX(1);}
+.section:hover {
+  transform: translateY(-15px) scale(1.05); /* حركة خفيفة عند التحويم */
+  box-shadow:0 0 30px #ff0000; /* إبراز الإطار فقط */
+}
+.section:hover i {transform: scale(1.2) rotate(10deg);}
+
+/* Neon glowing lines on enter */
+.section.glow {
+  box-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 30px #ff0000 inset;
+  animation: glowAnim 1.2s ease-in-out forwards;
+}
+@keyframes glowAnim {
+  0% { box-shadow: 0 0 0 #ff0000; }
+  50% { box-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000 inset; }
+  100% { box-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000 inset; }
+}
+
+/* Responsive */
+@media(max-width:768px){
+  .sections{flex-direction:column; gap:30px;}
+  .section{padding:35px 25px; font-size:1.4rem;}
+  .logo-container{width:150px; height:150px;}
+}
+</style>
+</head>
+<body>
+
+<!-- Full screen intro -->
+<div id="intro">
+  <img src="logo.png" alt="لوغو السيرفر">
+  <h1>مرحبا بكم في سيرفر فلوريدا</h1>
 </div>
 
-<section class="cards">
-      <!-- Three categories -->
-      <a class="card card-blue" href="category.html?cat=administrative">
-        <div class="card-icon"><i class="fas fa-file-alt"></i></div>
-        <h3>مخالفات إدارية</h3>
-        <p class="muted">انضباط، مذكرات، تقارير يومية</p>
-      </a>
-
-      <a class="card card-red" href="category.html?cat=field">
-        <div class="card-icon"><i class="fas fa-car-crash"></i></div>
-        <h3>مخالفات ميدانية</h3>
-        <p class="muted">سلوك أثناء المداهمات، إطلاق نار خاطئ</p>
-      </a>
-
-      <a class="card card-green" href="category.html?cat=behavior">
-        <div class="card-icon"><i class="fas fa-balance-scale"></i></div>
-        <h3>مخالفات سلوك وظيفي</h3>
-        <p class="muted">رشوة، استغلال منصب، إساءة للمدنيين</p>
-      </a>
-    </section>
-
-
-    </section>
-
-    <section class="animated-wave">
-      <div class="wave"></div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <small>© 2025 — نظام مرجعي لمخالفات العاملين الصحيين</small>
-  </footer>
-
-  <div id="about-modal" class="modal hidden">
-    <div class="modal-card">
-      <button class="close" id="close-about">&times;</button>
-      <h3>معلومات</h3>
-      <p>هذا المشروع يعرض مخالفات العاملين الصحيين مع العقوبات الخاصة بكل مخالفة. يمكنك الانتقال لأي تصنيف ثم عرض تفاصيل كل مخالفة.</p>
-    </div>
+<div class="container">
+  <div class="logo-container">
+    <img src="logo.png" alt="لوغو السيرفر">
   </div>
 
-  <script src="assets/js/app.js"></script>
+  <div class="sections">
+    <a href="police.html" class="section"><i class="fas fa-user-shield"></i><span>الشرطة</span></a>
+    <a href="health.html" class="section"><i class="fas fa-hospital"></i><span>الصحة</span></a>
+    <a href="justice.html" class="section"><i class="fas fa-gavel"></i><span>العدل</span></a>
+  </div>
+</div>
+
+<script>
+// Intro fade out
+window.addEventListener('load', ()=>{
+  const intro = document.getElementById('intro');
+  setTimeout(()=>{
+    intro.style.transition='opacity 1.5s ease';
+    intro.style.opacity=0;
+    setTimeout(()=> intro.style.display='none',1500);
+
+    // Show main container
+    const container = document.querySelector('.container');
+    container.style.transition='opacity 1.5s ease';
+    container.style.opacity=1;
+
+    // Animate sections with glow
+    const sections = document.querySelectorAll('.section');
+    sections.forEach((sec,i)=>{
+      setTimeout(()=>{
+        sec.style.opacity=1;
+        sec.style.transform='translateY(0)';
+        sec.classList.add('glow');
+        setTimeout(()=> sec.classList.remove('glow'), 1200); // remove glow after animation
+      }, i*300);
+    });
+  }, 1000); // stay 1s before fade
+});
+
+// Create random particles
+for(let i=0;i<50;i++){
+  const p=document.createElement('div');
+  p.className='particle';
+  p.style.left=Math.random()*window.innerWidth+'px';
+  p.style.top=Math.random()*window.innerHeight+'px';
+  p.style.width=(Math.random()*4+2)+'px';
+  p.style.height=p.style.width;
+  p.style.animationDuration=(Math.random()*10+5)+'s';
+  p.style.opacity=Math.random()*0.5+0.3;
+  document.body.appendChild(p);
+}
+
+// Parallax on mouse
+document.addEventListener('mousemove', e=>{
+  const x = (e.clientX / window.innerWidth - 0.5) * 30;
+  const y = (e.clientY / window.innerHeight - 0.5) * 30;
+  document.querySelector('.container').style.transform = `translate(${x}px, ${y}px)`;
+  document.querySelector('.logo-container').style.transform = `translate(${x/2}px, ${y/2}px)`;
+  document.querySelector('.sections').style.transform = `translate(${x/3}px, ${y/3}px)`;
+});
+</script>
+
 </body>
 </html>
