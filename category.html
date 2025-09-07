@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>المخالفات  — قائمة</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="bg">
+  <header class="header small">
+<div class="badge"><i class="fas fa-shield-alt"></i></div>
+      <div>
+        <h1 id="page-title">المخالفات</h1>
+        <p class="muted" id="page-sub">قائمة المخالفات</p>
+      </div>
+
+    </div>
+    <nav>
+      <a class="btn" href="index.html"><i class="fas fa-arrow-right"></i> الصفحة الرئيسية</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="glass list-panel" id="list-panel">
+      <div class="list-actions">
+        <input id="search" placeholder="ابحث ..." />
+        <div class="chip" id="count">0 نتيجة</div>
+      </div>
+
+      <ul id="violations-list" class="violations-list">
+        <!-- سيتم ملؤها بواسطة JS -->
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <small>انقر على أي مخالفة لعرض التفاصيل والعقوبة</small>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

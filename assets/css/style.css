@@ -1,0 +1,178 @@
+:root {
+  --bg:#e9eef5;             /* خلفية عامة فاتحة مائلة للرمادي المزرق */
+  --card:#ffffff;           /* بطاقات بيضاء واضحة */
+  --muted:#334155;          /* نصوص ثانوية أزرق رمادي غامق */
+  
+  --blue-dark:#1e3a8a;      /* أزرق شرطة داكن */
+  --blue:#2563eb;           /* أزرق رئيسي */
+  --blue-light:#3b82f6;     /* أزرق فاتح للهوفر */
+  
+  --red:#dc2626;            /* أحمر تحذير */
+  --green:#16a34a;          /* أخضر نجاح */
+  
+  --glass-bg: rgba(255,255,255,0.7);  /* خلفية زجاجية فاتحة */
+  --accent: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 60%, var(--blue-light) 100%);
+  --glass-border: rgba(0,0,0,0.08);
+  --glass-blur: 10px;
+}
+
+
+
+/* خلفية متحركة */
+body.bg {
+  position: relative;
+  overflow-x: hidden;  /* يخفي فقط التمرير الأفقي */
+  overflow-y: auto;    /* يسمح بالتمرير العمودي */
+  background: radial-gradient(circle at 30% 30%, rgba(30,58,138,0.08), transparent),
+              radial-gradient(circle at 70% 70%, rgba(4,120,87,0.08), transparent);
+}
+.animated-bg {
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background: linear-gradient(135deg, #1e3a8a 0%, #047857 100%);
+  background-size: 400% 400%;
+  animation: gradientMove 25s ease infinite;
+  z-index: -1;
+}
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* تنسيق البطاقات */
+.card {
+  backdrop-filter: blur(var(--glass-blur));
+  background: var(--glass-bg);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  padding:22px;
+  border-radius:14px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.12);
+  border:1px solid rgba(0,0,0,0.05);
+}
+.card:hover {
+  background: rgba(255,255,255,0.3);
+  transform:translateY(-6px) scale(1.02);
+  box-shadow:0 12px 28px rgba(0,0,0,0.2);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:"Segoe UI", Tahoma, Arial, sans-serif;color:#111827;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+
+/* الهيدر */
+.header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 28px;
+  background:linear-gradient(180deg, rgba(0,0,0,0.05), transparent);
+  border-bottom:1px solid rgba(0,0,0,0.08);
+}
+.header.small{padding:12px 20px}
+.brand{display:flex;gap:14px;align-items:center}
+.badge{width:54px;height:54px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:var(--accent);box-shadow:0 6px 20px rgba(30,58,138,0.25);font-size:20px}
+.brand h1{margin:0;font-size:18px}
+.muted{color:var(--muted);margin:4px 0 0;font-size:13px}
+
+/* الحاوية */
+.container{max-width:1100px;margin:30px auto;padding:0 18px}
+.glass{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:14px;padding:20px;backdrop-filter: blur(var(--glass-blur));box-shadow: 0 6px 24px rgba(0,0,0,0.12)}
+.intro{text-align:center}
+
+/* البطاقات */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:16px;
+  margin-top:30px;
+  padding-bottom:20px;
+}
+
+/* بانر القوانين */
+.laws-banner {
+  width:100%;
+  padding:20px;
+  border-radius:14px;
+  text-align:center;
+  background: linear-gradient(135deg, rgba(30,58,138,0.15), rgba(4,120,87,0.1));
+  backdrop-filter: blur(10px);
+  border:1px solid rgba(30,58,138,0.2);
+  box-shadow:0 8px 24px rgba(0,0,0,0.15);
+  margin-bottom:10px;
+  margin-top:15px;
+  position:relative;
+  overflow-x: hidden;  /* يخفي فقط التمرير الأفقي */
+  overflow-y: hidden;    /* يسمح بالتمرير العمودي */
+  cursor:pointer;
+  background-size:200% 200%;
+  transition:all 0.3s ease;
+  animation: bannerGradient 10s ease infinite;
+}
+.laws-banner .icon { font-size:40px;color:var(--blue);margin-bottom:8px;transition: transform 0.3s ease;}
+.laws-banner h2 { font-size:20px;color:#1e3a8a;margin:4px 0; transition: color 0.3s ease;}
+.laws-banner p { font-size:14px;color:var(--muted); margin:0; transition: color 0.3s ease;}
+.laws-banner:hover { transform:translateY(-5px) scale(1.02); box-shadow:0 12px 28px rgba(0,0,0,0.18); background-position:100% 50%; }
+.laws-banner:hover .icon { transform:scale(1.2) rotate(10deg);}
+.laws-banner:hover h2, .laws-banner:hover p{ color:var(--blue);}
+@keyframes bannerGradient {0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+
+/* أيقونات البطاقات */
+.card-icon {width:48px;height:48px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;}
+.card-blue .card-icon { background: rgba(30,58,138,0.2); color:#fcd34d; } /* أزرق الشرطة */
+.card-red .card-icon { background: rgba(185,28,28,0.2); color:#f87171; } /* أحمر التحذيرات */
+.card-green .card-icon { background: rgba(4,120,87,0.2); color:#34d399; } /* أخضر للصحة */
+
+/* لون البطاقات حسب النوع */
+.card-blue {background: linear-gradient(180deg, rgba(30,58,138,0.08), rgba(30,58,138,0.04)); border-left:4px solid var(--blue);}
+.card-red {background: linear-gradient(180deg, rgba(185,28,28,0.08), rgba(185,28,28,0.04)); border-left:4px solid var(--red);}
+.card-green {background: linear-gradient(180deg, rgba(4,120,87,0.08), rgba(4,120,87,0.04)); border-left:4px solid var(--green);}
+
+/* الفوتر */
+.footer{text-align:center;padding:22px;color:var(--muted)}
+
+/* الموجة المتحركة */
+.animated-wave{margin-top:28px;overflow:hidden;height:40px}
+.wave{height:40px;background:linear-gradient(90deg, rgba(30,58,138,0.05), rgba(4,120,87,0.05)); transform: skewY(-3deg); animation:wave 9s linear infinite;}
+@keyframes wave{0%{transform:translateX(-20%) skewY(-3deg)}100%{transform:translateX(20%) skewY(-3deg)}}
+#search{flex:1;padding:10px;border-radius:10px;border:1px solid rgba(0,0,0,0.05);background:transparent;color:inherit}
+
+/* قائمة المخالفات */
+.violations-list{list-style:none;padding:0;margin:0;display:grid;gap:12px;}
+.violation{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:14px;border-radius:10px;background:linear-gradient(180deg, rgba(0,0,0,0.02), transparent);border:1px solid rgba(0,0,0,0.05);transition:transform .18s, box-shadow .18s;}
+.violation:hover{transform:translateY(-6px);box-shadow:0 12px 20px rgba(0,0,0,0.1);}
+.violation .left{display:flex;gap:12px;align-items:center;}
+.violation .ico{width:46px;height:46px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:rgba(30,58,138,0.15);font-size:18px;}
+.violation h4{margin:0;}
+.violation p{margin:0;color:var(--muted);font-size:13px;}
+.punishment{padding:8px 12px;border-radius:8px;background:rgba(185,28,28,0.15);color:var(--red);font-weight:600;border:1px solid rgba(185,28,28,0.1);}
+
+/* لوحة التفاصيل */
+.detail-panel{padding:30px;min-height:240px;}
+.detail-title{display:flex;gap:16px;align-items:center;}
+.detail-title .big-ico{width:72px;height:72px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:28px;background:var(--glass-bg);}
+.detail-desc{margin-top:14px;color:var(--muted);line-height:1.6;}
+.badge-punishment{display:inline-block;padding:10px 14px;border-radius:12px;margin-top:18px;font-weight:700;}
+
+/* أزرار */
+.btn{display:inline-flex;gap:8px;align-items:center;padding:8px 12px;border-radius:10px;background:var(--glass-bg);border:1px solid rgba(0,0,0,0.05);cursor:pointer;}
+.btn.ghost{background:transparent;}
+.btn:hover{transform:translateY(-3px);}
+
+/* مودال */
+.modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.4);z-index:80;}
+.modal-card{width:420px;background:var(--card);padding:20px;border-radius:12px;position:relative;box-shadow:0 20px 50px rgba(0,0,0,0.2);}
+.modal .close{position:absolute;left:12px;top:10px;background:transparent;border:0;color:var(--muted);font-size:22px;cursor:pointer;}
+
+/* أدوات مساعدة */
+.hidden{display:none;}
+
+/* responsive */
+@media (max-width:720px){
+  .brand h1{font-size:16px;}
+  .cards{grid-template-columns:1fr;}
+  .detail-title{flex-direction:column;align-items:flex-end;}
+}

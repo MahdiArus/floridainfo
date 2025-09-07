@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>قائمة المخالفات</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="assets/css/justice.css" />
+</head>
+<body class="bg">
+  <header class="header small">
+    <div class="brand">
+      <div class="badge"><i class="fas fa-scale-balanced"></i></div>
+      <div>
+        <h1 id="page-title">المخالفات</h1>
+        <p class="muted" id="page-sub">قائمة المخالفات ضمن التصنيف</p>
+      </div>
+    </div>
+    <nav>
+      <a class="btn" href="justice.html"><i class="fas fa-arrow-right"></i> الصفحة الرئيسية</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="glass list-panel" id="list-panel">
+      <div class="list-actions">
+        <input id="search" placeholder="ابحث باسم المخالفة..." />
+        <div class="chip" id="count">0 نتيجة</div>
+      </div>
+
+      <ul id="violations-list" class="violations-list"></ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <small>انقر على أي مخالفة لعرض التفاصيل</small>
+  </footer>
+
+  <script src="assets/js/justice.js"></script>
+</body>
+</html>

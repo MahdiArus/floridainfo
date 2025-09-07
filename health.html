@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>مخالفات الصحة — الصفحة الرئيسية</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="assets/css/health.css" />
+</head>
+<body class="bg">
+  <header class="header">
+    <div class="brand">
+      <div class="badge"><i class="fas fa-hospital-symbol"></i></div>
+      <div>
+        <h1>أرشيف مخالفات العاملين الصحيين</h1>
+        <p class="muted">دليل المخالفات والإجراءات الصحية الداخلية</p>
+      </div>
+    </div>
+    <nav>
+      <button class="btn ghost" id="open-about"><i class="fas fa-info-circle"></i> معلومات</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="intro glass">
+      <h2>اختر تصنيف المخالفات الصحية</h2>
+      <p class="muted">اضغط على أي بطاقة لعرض قائمة المخالفات داخل التصنيف</p>
+    </section>
+<!-- بانر القوانين -->
+<div class="laws-banner">
+  <a href="hcategory.html?cat=rules">
+    <div class="content">
+      <div class="icon">⚖️</div>
+      <h2>القوانين</h2>
+      <p>تعرف على القوانين والأنظمة المعتمدة</p>
+    </div>
+  </a>
+</div>
+
+    <section class="cards">
+      <a class="card card-blue" href="hcategory.html?cat=administrative">
+        <div class="card-icon"><i class="fas fa-file-medical"></i></div>
+        <h3>مخالفات تنظيمية</h3>
+        <p class="muted">انضباط الموظفين، التأخر، التقارير اليومية</p>
+      </a>
+
+      <a class="card card-red" href="hcategory.html?cat=field">
+        <div class="card-icon"><i class="fas fa-procedures"></i></div>
+        <h3>مخالفات ميدانية</h3>
+        <p class="muted">سلوك أثناء التعامل مع المرضى أو استخدام المعدات الطبية</p>
+      </a>
+
+      <a class="card card-green" href="hcategory.html?cat=behavior">
+        <div class="card-icon"><i class="fas fa-hand-holding-medical"></i></div>
+        <h3>مخالفات خطيرة</h3>
+        <p class="muted">إهمال المرضى، سوء استخدام الأدوية، إساءة المعدات الطبية</p>
+      </a>
+   
+    </section>
+
+    <section class="animated-wave">
+      <div class="wave"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <small>© 2025 — نظام مرجعي لمخالفات العاملين الصحيين</small>
+  </footer>
+
+  <div id="about-modal" class="modal hidden">
+    <div class="modal-card">
+      <button class="close" id="close-about">&times;</button>
+      <h3>معلومات</h3>
+      <p>هذا المشروع يعرض مخالفات العاملين الصحيين مع العقوبات الخاصة بكل مخالفة. يمكنك الانتقال لأي تصنيف ثم عرض تفاصيل كل مخالفة.</p>
+    </div>
+  </div>
+
+  <script src="assets/js/health.js"></script>
+</body>
+</html>

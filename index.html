@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>مخالفات الشرطة — الصفحة الرئيسية</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="bg">
+  <header class="header">
+    <div class="brand">
+      <div class="badge"><i class="fas fa-shield-alt"></i></div>
+      <div>
+        <h1>أرشيف مخالفات الشرطة</h1>
+        <p class="muted">دليل المخالفات الداخلية للعاملين بالقسم —  </p>
+      </div>
+    </div>
+    <nav>
+      <button class="btn ghost" id="open-about"><i class="fas fa-info-circle"></i> معلومات</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="intro glass">
+      <h2>اختر تصنيف المخالفات </h2>
+      <p class="muted">اضغط على أي بطاقة لعرض قائمة المخالفات داخل التصنيف</p>
+    </section>
+<!-- بانر القوانين -->
+<div class="laws-banner">
+  <a href="category.html?cat=rules">
+    <div class="content">
+      <div class="icon">⚖️</div>
+      <h2>القوانين</h2>
+      <p>تعرف على القوانين والأنظمة المعتمدة</p>
+    </div>
+  </a>
+</div>
+
+<section class="cards">
+      <!-- Three categories -->
+      <a class="card card-blue" href="category.html?cat=administrative">
+        <div class="card-icon"><i class="fas fa-file-alt"></i></div>
+        <h3>مخالفات إدارية</h3>
+        <p class="muted">انضباط، مذكرات، تقارير يومية</p>
+      </a>
+
+      <a class="card card-red" href="category.html?cat=field">
+        <div class="card-icon"><i class="fas fa-car-crash"></i></div>
+        <h3>مخالفات ميدانية</h3>
+        <p class="muted">سلوك أثناء المداهمات، إطلاق نار خاطئ</p>
+      </a>
+
+      <a class="card card-green" href="category.html?cat=behavior">
+        <div class="card-icon"><i class="fas fa-balance-scale"></i></div>
+        <h3>مخالفات سلوك وظيفي</h3>
+        <p class="muted">رشوة، استغلال منصب، إساءة للمدنيين</p>
+      </a>
+    </section>
+
+
+    </section>
+
+    <section class="animated-wave">
+      <div class="wave"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <small>© 2025 — نظام مرجعي لمخالفات العاملين الصحيين</small>
+  </footer>
+
+  <div id="about-modal" class="modal hidden">
+    <div class="modal-card">
+      <button class="close" id="close-about">&times;</button>
+      <h3>معلومات</h3>
+      <p>هذا المشروع يعرض مخالفات العاملين الصحيين مع العقوبات الخاصة بكل مخالفة. يمكنك الانتقال لأي تصنيف ثم عرض تفاصيل كل مخالفة.</p>
+    </div>
+  </div>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
